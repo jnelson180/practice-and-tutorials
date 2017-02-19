@@ -1,13 +1,15 @@
-var BugList = React.createClass({
-  displayName: 'BugList',
+class BugList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  render: function () {
+  render() {
     return React.createElement(
       'div',
       null,
       'Placeholder text'
     );
   }
-});
+}
 
 ReactDOM.render(React.createElement(BugList, null), document.getElementById('main'));

@@ -1,10 +1,14 @@
-var BugList = React.createClass({
-  render: function() {
+class BugList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     return (
-    <div>{'Placeholder text'}</div>
-  );
+      <div>Placeholder text</div>
+    );
+  }
 }
-});
 
 ReactDOM.render(
   <BugList />,
