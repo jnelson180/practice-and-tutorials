@@ -1,0 +1,4 @@
+3.2- had to add enclosing <div> around entire return() section in src/app.js in order for
+React to parse it correctly; React can only technically return one element on render().
+
+3.2- switched from React.createClass to the es6(future) class VariableName extends React.Component
