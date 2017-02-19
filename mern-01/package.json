@@ -9,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-preset-react": "^6.23.0",
     "express": "^4.14.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0"
   }
 }
