@@ -11,6 +11,7 @@ class BugList extends React.Component {
     }
   }
   render() {
+    console.log("Rendering bug list, num items: ", this.state.bugs.length);
     return (
       <div>
       <div>Bug list loads in here.</div>
@@ -19,11 +20,31 @@ class BugList extends React.Component {
         <BugFilter />
         <hr />
         <BugTable bugs={this.state.bugs}/>
+        <button onClick={this.testNewBug}>Add Bug</button>
         <hr />
         <BugAdd />
       </div>
       </div>
     );
+  }
+
+  testNewBug() {
+    var nextId = this.state.bugs.length + 1;
+    this.addBug({
+      id: nextId,
+      priority: 'P2',
+      status:'New',
+      owner:'Pieta',
+      title:'Warning on console'
+    })
+  }
+
+  addBug(bug) {
+    console.log("Adding bug: ", bug);
+    // Make a copy of state to rewrite since its immutable
+    var bugsModified = this.state.bugs.slice();
+    bugsModified.push(bug);
+    this.setState({bugs: bugsModified});
   }
 }
 
@@ -32,6 +53,7 @@ class BugRow extends React.Component {
     super(props);
   }
   render() {
+    console.log("Rendering BugRow: ", this.props.bug);
     return (
     <tr>
       <td>{this.props.bug.id}</td>
@@ -49,6 +71,7 @@ class BugFilter extends React.Component {
     super(props);
   }
   render() {
+    console.log("Rendering BugFilter");
     return (
       <div>Filter bugs in this section.</div>
     );
@@ -60,6 +83,7 @@ class BugTable extends React.Component {
     super(props);
   }
   render() {
+    console.log("Rendering bug table, num items: ", this.props.bugs.length);
     var bugRows=this.props.bugs.map(function(bug) {
       return <BugRow key={bug.id} bug={bug} />
     });
@@ -87,6 +111,7 @@ class BugAdd extends React.Component {
     super(props);
   }
   render() {
+    console.log("Rendering BugAdd");
     return (
       <div>Use this form to add a bug.</div>
     );

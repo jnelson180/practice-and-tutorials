@@ -8,6 +8,7 @@ class BugList extends React.Component {
     };
   }
   render() {
+    console.log("Rendering bug list, num items: ", this.state.bugs.length);
     return React.createElement(
       'div',
       null,
@@ -27,10 +28,34 @@ class BugList extends React.Component {
         React.createElement(BugFilter, null),
         React.createElement('hr', null),
         React.createElement(BugTable, { bugs: this.state.bugs }),
+        React.createElement(
+          'button',
+          { onClick: this.testNewBug },
+          'Add Bug'
+        ),
         React.createElement('hr', null),
         React.createElement(BugAdd, null)
       )
     );
+  }
+
+  testNewBug() {
+    var nextId = this.state.bugs.length + 1;
+    this.addBug({
+      id: nextId,
+      priority: 'P2',
+      status: 'New',
+      owner: 'Pieta',
+      title: 'Warning on console'
+    });
+  }
+
+  addBug(bug) {
+    console.log("Adding bug: ", bug);
+    // Make a copy of state to rewrite since its immutable
+    var bugsModified = this.state.bugs.slice();
+    bugsModified.push(bug);
+    this.setState({ bugs: bugsModified });
   }
 }
 
@@ -39,6 +64,7 @@ class BugRow extends React.Component {
     super(props);
   }
   render() {
+    console.log("Rendering BugRow: ", this.props.bug);
     return React.createElement(
       'tr',
       null,
@@ -76,6 +102,7 @@ class BugFilter extends React.Component {
     super(props);
   }
   render() {
+    console.log("Rendering BugFilter");
     return React.createElement(
       'div',
       null,
@@ -89,6 +116,7 @@ class BugTable extends React.Component {
     super(props);
   }
   render() {
+    console.log("Rendering bug table, num items: ", this.props.bugs.length);
     var bugRows = this.props.bugs.map(function (bug) {
       return React.createElement(BugRow, { key: bug.id, bug: bug });
     });
@@ -142,6 +170,7 @@ class BugAdd extends React.Component {
     super(props);
   }
   render() {
+    console.log("Rendering BugAdd");
     return React.createElement(
       'div',
       null,
