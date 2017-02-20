@@ -6,6 +6,9 @@ var bugData = [
 class BugList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      bugs: bugData,
+    }
   }
   render() {
     return (
@@ -15,7 +18,7 @@ class BugList extends React.Component {
         <h1>Bug Tracker</h1>
         <BugFilter />
         <hr />
-        <BugTable bugs={bugData}/>
+        <BugTable bugs={this.state.bugs}/>
         <hr />
         <BugAdd />
       </div>

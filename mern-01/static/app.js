@@ -3,6 +3,9 @@ var bugData = [{ id: 1, priority: 'P1', status: 'Open', owner: 'Ravan', title: '
 class BugList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      bugs: bugData
+    };
   }
   render() {
     return React.createElement(
@@ -23,7 +26,7 @@ class BugList extends React.Component {
         ),
         React.createElement(BugFilter, null),
         React.createElement('hr', null),
-        React.createElement(BugTable, { bugs: bugData }),
+        React.createElement(BugTable, { bugs: this.state.bugs }),
         React.createElement('hr', null),
         React.createElement(BugAdd, null)
       )
