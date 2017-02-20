@@ -1,28 +1,30 @@
+var bugData = [{ id: 1, priority: 'P1', status: 'Open', owner: 'Ravan', title: 'App crashes on open' }, { id: 2, priority: 'P2', status: 'New', owner: 'Eddie', title: 'Misaligned border on panel' }];
+
 class BugList extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return React.createElement(
-      "div",
+      'div',
       null,
       React.createElement(
-        "div",
+        'div',
         null,
-        "Bug list loads in here."
+        'Bug list loads in here.'
       ),
       React.createElement(
-        "div",
+        'div',
         null,
         React.createElement(
-          "h1",
+          'h1',
           null,
-          "Bug Tracker"
+          'Bug Tracker'
         ),
         React.createElement(BugFilter, null),
-        React.createElement("hr", null),
-        React.createElement(BugTable, null),
-        React.createElement("hr", null),
+        React.createElement('hr', null),
+        React.createElement(BugTable, { bugs: bugData }),
+        React.createElement('hr', null),
         React.createElement(BugAdd, null)
       )
     );
@@ -35,32 +37,32 @@ class BugRow extends React.Component {
   }
   render() {
     return React.createElement(
-      "tr",
+      'tr',
       null,
       React.createElement(
-        "td",
+        'td',
         null,
-        this.props.id
+        this.props.bug.id
       ),
       React.createElement(
-        "td",
+        'td',
         null,
-        this.props.status
+        this.props.bug.status
       ),
       React.createElement(
-        "td",
+        'td',
         null,
-        this.props.priority
+        this.props.bug.priority
       ),
       React.createElement(
-        "td",
+        'td',
         null,
-        this.props.owner
+        this.props.bug.owner
       ),
       React.createElement(
-        "td",
+        'td',
         null,
-        this.props.title
+        this.props.bug.title
       )
     );
   }
@@ -72,9 +74,9 @@ class BugFilter extends React.Component {
   }
   render() {
     return React.createElement(
-      "div",
+      'div',
       null,
-      "Filter bugs in this section."
+      'Filter bugs in this section.'
     );
   }
 }
@@ -84,47 +86,49 @@ class BugTable extends React.Component {
     super(props);
   }
   render() {
+    var bugRows = this.props.bugs.map(function (bug) {
+      return React.createElement(BugRow, { key: bug.id, bug: bug });
+    });
     return React.createElement(
-      "table",
+      'table',
       null,
       React.createElement(
-        "thead",
+        'thead',
         null,
         React.createElement(
-          "tr",
+          'tr',
           null,
           React.createElement(
-            "th",
+            'th',
             null,
-            "ID"
+            'ID'
           ),
           React.createElement(
-            "th",
+            'th',
             null,
-            "Status"
+            'Status'
           ),
           React.createElement(
-            "th",
+            'th',
             null,
-            "Priority"
+            'Priority'
           ),
           React.createElement(
-            "th",
+            'th',
             null,
-            "Owner"
+            'Owner'
           ),
           React.createElement(
-            "th",
+            'th',
             null,
-            "Title"
+            'Title'
           )
         )
       ),
       React.createElement(
-        "tbody",
+        'tbody',
         null,
-        React.createElement(BugRow, { id: 1, priority: "P1", status: "Open", owner: "Ravan", title: "App crashes on open" }),
-        React.createElement(BugRow, { id: 2, priority: "P2", status: "New", owner: "Eddie", title: "Misaligned border on panel" })
+        bugRows
       )
     );
   }
@@ -136,9 +140,9 @@ class BugAdd extends React.Component {
   }
   render() {
     return React.createElement(
-      "div",
+      'div',
       null,
-      "Use this form to add a bug."
+      'Use this form to add a bug.'
     );
   }
 }
