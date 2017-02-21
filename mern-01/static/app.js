@@ -1,63 +1,14 @@
-var bugData = [{ id: 1, priority: 'P1', status: 'Open', owner: 'Ravan', title: 'App crashes on open' }, { id: 2, priority: 'P2', status: 'New', owner: 'Eddie', title: 'Misaligned border on panel' }];
-
-class BugList extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      bugs: bugData
-    };
-    this.testNewBug = this.testNewBug.bind(this);
+class BugFilter extends React.Component {
+  constructor(props) {
+    super(props);
   }
   render() {
-    console.log("Rendering bug list, num items: ", this.state.bugs.length);
+    console.log("Rendering BugFilter");
     return React.createElement(
-      'div',
+      "div",
       null,
-      React.createElement(
-        'div',
-        null,
-        'Bug list loads in here.'
-      ),
-      React.createElement(
-        'div',
-        null,
-        React.createElement(
-          'h1',
-          null,
-          'Bug Tracker'
-        ),
-        React.createElement(BugFilter, null),
-        React.createElement('hr', null),
-        React.createElement(BugTable, { bugs: this.state.bugs }),
-        ' // state accessible here',
-        React.createElement(
-          'button',
-          { onClick: this.testNewBug },
-          'Add Bug'
-        ),
-        React.createElement('hr', null),
-        React.createElement(BugAdd, null)
-      )
+      "Filter bugs in this section."
     );
-  }
-
-  testNewBug() {
-    var nextId = this.state.bugs.length + 1;
-    this.addBug({
-      id: nextId,
-      priority: 'P2',
-      status: 'New',
-      owner: 'Pieta',
-      title: 'Warning on console'
-    });
-  }
-
-  addBug(bug) {
-    console.log("Adding bug: ", bug);
-    // Make a copy of state to rewrite since its immutable
-    var bugsModified = this.state.bugs.slice();
-    bugsModified.push(bug);
-    this.setState({ bugs: bugsModified });
   }
 }
 
@@ -68,47 +19,33 @@ class BugRow extends React.Component {
   render() {
     console.log("Rendering BugRow: ", this.props.bug);
     return React.createElement(
-      'tr',
+      "tr",
       null,
       React.createElement(
-        'td',
+        "td",
         null,
         this.props.bug.id
       ),
       React.createElement(
-        'td',
+        "td",
         null,
         this.props.bug.status
       ),
       React.createElement(
-        'td',
+        "td",
         null,
         this.props.bug.priority
       ),
       React.createElement(
-        'td',
+        "td",
         null,
         this.props.bug.owner
       ),
       React.createElement(
-        'td',
+        "td",
         null,
         this.props.bug.title
       )
-    );
-  }
-}
-
-class BugFilter extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    console.log("Rendering BugFilter");
-    return React.createElement(
-      'div',
-      null,
-      'Filter bugs in this section.'
     );
   }
 }
@@ -123,43 +60,43 @@ class BugTable extends React.Component {
       return React.createElement(BugRow, { key: bug.id, bug: bug });
     });
     return React.createElement(
-      'table',
+      "table",
       null,
       React.createElement(
-        'thead',
+        "thead",
         null,
         React.createElement(
-          'tr',
+          "tr",
           null,
           React.createElement(
-            'th',
+            "th",
             null,
-            'ID'
+            "ID"
           ),
           React.createElement(
-            'th',
+            "th",
             null,
-            'Status'
+            "Status"
           ),
           React.createElement(
-            'th',
+            "th",
             null,
-            'Priority'
+            "Priority"
           ),
           React.createElement(
-            'th',
+            "th",
             null,
-            'Owner'
+            "Owner"
           ),
           React.createElement(
-            'th',
+            "th",
             null,
-            'Title'
+            "Title"
           )
         )
       ),
       React.createElement(
-        'tbody',
+        "tbody",
         null,
         bugRows
       )
@@ -168,16 +105,80 @@ class BugTable extends React.Component {
 }
 
 class BugAdd extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   render() {
     console.log("Rendering BugAdd");
+    console.log(this.props);
     return React.createElement(
-      'div',
+      "div",
       null,
-      'Use this form to add a bug.'
+      React.createElement(
+        "form",
+        { name: "bugAdd" },
+        React.createElement("input", { type: "text", name: "owner", placeholder: "Owner" }),
+        React.createElement("input", { type: "text", name: "title", placeholder: "Title" }),
+        React.createElement(
+          "button",
+          { onClick: this.handleSubmit },
+          "Add Bug"
+        )
+      )
     );
+  }
+  handleSubmit(e) {
+    console.log("this.props is:");
+    console.log(this.props);
+    e.preventDefault();
+    var form = document.forms.bugAdd;
+    this.props.addBug({
+      owner: form.owner.value,
+      title: form.title.value,
+      status: 'New',
+      priority: 'P1'
+    });
+    // clear form for next input
+    form.owner.value = "";form.title.value = "";
+  }
+}
+
+var bugData = [{ id: 1, priority: 'P1', status: 'Open', owner: 'Ravan', title: 'App crashes on open' }, { id: 2, priority: 'P2', status: 'New', owner: 'Eddie', title: 'Misaligned border on panel' }];
+
+class BugList extends React.Component {
+  constructor() {
+    super();
+    this.addBug = this.addBug.bind(this);
+    this.state = {
+      bugs: bugData
+    };
+  }
+  render() {
+    console.log("Rendering bug list, num items: ", this.state.bugs.length);
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "h1",
+        null,
+        "Bug Tracker"
+      ),
+      React.createElement(BugFilter, null),
+      React.createElement("hr", null),
+      React.createElement(BugTable, { bugs: this.state.bugs }),
+      React.createElement("hr", null),
+      React.createElement(BugAdd, { addBug: this.addBug })
+    );
+  }
+
+  addBug(bug) {
+    console.log("Adding bug: ", bug);
+    // Make a copy of state to rewrite since its immutable
+    var bugsModified = this.state.bugs.slice();
+    bug.id = this.state.bugs.length + 1;
+    bugsModified.push(bug);
+    this.setState({ bugs: bugsModified });
   }
 }
 

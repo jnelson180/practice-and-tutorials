@@ -1,51 +1,12 @@
-var bugData = [
-  {id: 1, priority: 'P1', status:'Open', owner:'Ravan', title:'App crashes on open'},
-  {id: 2, priority: 'P2', status: 'New', owner:'Eddie', title:'Misaligned border on panel'},
-];
-
-class BugList extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      bugs: bugData,
-    }
-    this.testNewBug = this.testNewBug.bind(this);
+class BugFilter extends React.Component {
+  constructor(props) {
+    super(props);
   }
   render() {
-    console.log("Rendering bug list, num items: ", this.state.bugs.length);
+    console.log("Rendering BugFilter");
     return (
-      <div>
-      <div>Bug list loads in here.</div>
-      <div>
-        <h1>Bug Tracker</h1>
-        <BugFilter />
-        <hr />
-        <BugTable bugs={this.state.bugs}/> // state accessible here
-        <button onClick={this.testNewBug}>Add Bug</button>
-        <hr />
-        <BugAdd />
-      </div>
-      </div>
+      <div>Filter bugs in this section.</div>
     );
-  }
-
-  testNewBug() {
-    var nextId = this.state.bugs.length + 1;
-    this.addBug({
-      id: nextId,
-      priority: 'P2',
-      status:'New',
-      owner:'Pieta',
-      title:'Warning on console'
-    })
-  }
-
-  addBug(bug) {
-    console.log("Adding bug: ", bug);
-    // Make a copy of state to rewrite since its immutable
-    var bugsModified = this.state.bugs.slice();
-    bugsModified.push(bug);
-    this.setState({bugs: bugsModified});
   }
 }
 
@@ -64,18 +25,6 @@ class BugRow extends React.Component {
       <td>{this.props.bug.title}</td>
     </tr>
   );
-  }
-}
-
-class BugFilter extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    console.log("Rendering BugFilter");
-    return (
-      <div>Filter bugs in this section.</div>
-    );
   }
 }
 
@@ -108,14 +57,73 @@ class BugTable extends React.Component {
 }
 
 class BugAdd extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   render() {
     console.log("Rendering BugAdd");
+    console.log(this.props);
     return (
-      <div>Use this form to add a bug.</div>
+      <div>
+        <form name="bugAdd">
+          <input type="text" name="owner" placeholder="Owner" />
+          <input type="text" name="title" placeholder="Title" />
+          <button onClick={this.handleSubmit}>Add Bug</button>
+        </form>
+      </div>
     );
+  }
+  handleSubmit(e) {
+    console.log("this.props is:");
+    console.log(this.props);
+    e.preventDefault();
+    var form = document.forms.bugAdd;
+    this.props.addBug({
+      owner: form.owner.value,
+      title: form.title.value,
+      status: 'New',
+      priority: 'P1'
+    });
+    // clear form for next input
+    form.owner.value = ""; form.title.value = "";
+  }
+}
+
+var bugData = [
+  {id: 1, priority: 'P1', status:'Open', owner:'Ravan', title:'App crashes on open'},
+  {id: 2, priority: 'P2', status: 'New', owner:'Eddie', title:'Misaligned border on panel'},
+];
+
+class BugList extends React.Component {
+  constructor() {
+    super();
+    this.addBug = this.addBug.bind(this);
+    this.state = {
+      bugs: bugData,
+    }
+  }
+  render() {
+    console.log("Rendering bug list, num items: ", this.state.bugs.length);
+    return (
+      <div>
+        <h1>Bug Tracker</h1>
+        <BugFilter />
+        <hr />
+        <BugTable bugs={this.state.bugs}/>
+        <hr />
+        <BugAdd addBug={this.addBug} />
+      </div>
+    );
+  }
+
+  addBug(bug) {
+    console.log("Adding bug: ", bug);
+    // Make a copy of state to rewrite since its immutable
+    var bugsModified = this.state.bugs.slice();
+    bug.id = this.state.bugs.length + 1;
+    bugsModified.push(bug);
+    this.setState({bugs: bugsModified});
   }
 }
 
