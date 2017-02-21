@@ -1,11 +1,12 @@
 var bugData = [{ id: 1, priority: 'P1', status: 'Open', owner: 'Ravan', title: 'App crashes on open' }, { id: 2, priority: 'P2', status: 'New', owner: 'Eddie', title: 'Misaligned border on panel' }];
 
 class BugList extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       bugs: bugData
     };
+    this.testNewBug = this.testNewBug.bind(this);
   }
   render() {
     console.log("Rendering bug list, num items: ", this.state.bugs.length);
@@ -28,6 +29,7 @@ class BugList extends React.Component {
         React.createElement(BugFilter, null),
         React.createElement('hr', null),
         React.createElement(BugTable, { bugs: this.state.bugs }),
+        ' // state accessible here',
         React.createElement(
           'button',
           { onClick: this.testNewBug },

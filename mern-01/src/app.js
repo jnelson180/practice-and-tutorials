@@ -4,11 +4,12 @@ var bugData = [
 ];
 
 class BugList extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       bugs: bugData,
     }
+    this.testNewBug = this.testNewBug.bind(this);
   }
   render() {
     console.log("Rendering bug list, num items: ", this.state.bugs.length);
@@ -19,7 +20,7 @@ class BugList extends React.Component {
         <h1>Bug Tracker</h1>
         <BugFilter />
         <hr />
-        <BugTable bugs={this.state.bugs}/>
+        <BugTable bugs={this.state.bugs}/> // state accessible here
         <button onClick={this.testNewBug}>Add Bug</button>
         <hr />
         <BugAdd />
