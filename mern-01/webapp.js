@@ -14,7 +14,7 @@ var jsonParser = bodyParser.json({ "type": "application/json" });
 app.use(express.static('static'))
 
 app.get('/api/bugs', function (req, res) {
-  res.status(200).send(JSON.stringify(bugData));
+  res.json(bugData);
 })
 
 app.post('/api/bugs', jsonParser, function (req, res) {
@@ -29,7 +29,6 @@ app.post('/api/bugs', jsonParser, function (req, res) {
   newBugData = bugData.slice(0);
   newBugData.push(newBug);
   bugData = newBugData;
-  console.log(bugData);
   res.json(newBug);
 })
 
