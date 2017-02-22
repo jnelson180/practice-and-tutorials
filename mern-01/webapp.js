@@ -1,12 +1,20 @@
 var express = require('express')
 var app = express()
 
+app.use(express.static('static'));
+
+var bugData = [
+  {id: 1, priority: 'P1', status:'Open', owner:'Ravan', title:'App crashes on open'},
+  {id: 2, priority: 'P2', status: 'New', owner:'Eddie', title:'Misaligned border on panel'},
+];
+
 app.use(express.static('static'))
 
-app.get('/', function (req, res) {
-  res.send(index.html)
+app.get('/api/bugs', function (req, res) {
+  res.status(200).send(JSON.stringify(bugData));
 })
 
-app.listen(3000, function() {
-  console.log('Server listening on port 3000!');
+var server = app.listen(3000, function() {
+  var port = server.address().port;
+  console.log("Server listening on port " + port + "!");
 })
