@@ -90,17 +90,12 @@ class BugAdd extends React.Component {
   }
 }
 
-var bugData = [
-  {id: 1, priority: 'P1', status:'Open', owner:'Ravan', title:'App crashes on open'},
-  {id: 2, priority: 'P2', status: 'New', owner:'Eddie', title:'Misaligned border on panel'},
-];
-
 class BugList extends React.Component {
   constructor() {
     super();
     this.addBug = this.addBug.bind(this);
     this.state = {
-      bugs: bugData,
+      bugs: [],
     }
   }
   render() {
@@ -116,8 +111,13 @@ class BugList extends React.Component {
       </div>
     );
   }
-
-  addBug(bug) {
+componentDidMount() {
+    $.ajax('/api/bugs').done(function(data) {
+      var jsonData = JSON.parse(data);
+      this.setState({bugs: jsonData});
+    }.bind(this));
+    }
+addBug(bug) {
     console.log("Adding bug: ", bug);
     // Make a copy of state to rewrite since its immutable
     var bugsModified = this.state.bugs.slice();

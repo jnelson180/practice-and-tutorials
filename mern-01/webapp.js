@@ -9,13 +9,14 @@ var bugData = [
   {id: 2, priority: 'P2', status: 'New', owner:'Eddie', title:'Misaligned border on panel'},
 ];
 
-var jsonParser = bodyParser.json({ "type": "application/json" });
+var jsonParser = bodyParser.json();
 
 app.use(express.static('static'))
 
 app.get('/api/bugs', function (req, res) {
+  res.type('application/json');
   res.json(bugData);
-})
+});
 
 app.post('/api/bugs', jsonParser, function (req, res) {
   console.log('Received new bug: ');
