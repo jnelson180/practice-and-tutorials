@@ -15,11 +15,10 @@ app.use(express.static('static'))
 
 app.get('/api/bugs', function (req, res) {
   res.type('application/json');
-  res.json(bugData);
+  res.send(bugData);
 });
 
 app.post('/api/bugs', jsonParser, function (req, res) {
-  console.log('Received new bug: ');
   let newBug = {
     id: bugData.length + 1,
     priority: req.body.priority,
@@ -27,6 +26,7 @@ app.post('/api/bugs', jsonParser, function (req, res) {
     owner: req.body.owner,
     title: req.body.title
   }
+  console.log('Bug report #' + newBug.id + '\n', newBug, '\n');
   newBugData = bugData.slice(0);
   newBugData.push(newBug);
   bugData = newBugData;

@@ -171,17 +171,26 @@ class BugList extends React.Component {
   }
   componentDidMount() {
     $.ajax('/api/bugs').done(function (data) {
-      var jsonData = JSON.parse(data);
+      var jsonData = data;
       this.setState({ bugs: jsonData });
     }.bind(this));
   }
   addBug(bug) {
     console.log("Adding bug: ", bug);
     // Make a copy of state to rewrite since its immutable
-    var bugsModified = this.state.bugs.slice();
-    bug.id = this.state.bugs.length + 1;
-    bugsModified.push(bug);
-    this.setState({ bugs: bugsModified });
+    $.ajax({
+      type: 'POST', url: '/api/bugs',
+      contentType: 'application/json',
+      data: JSON.stringify(bug),
+      success: function (data) {
+        var bug = data;
+        var bugsModified = this.state.bugs.concat(bug);
+        this.setState({ bugs: bugsModified });
+      }.bind(this),
+      error: function (xhr, status, err) {
+        console.log("Error adding bug: ", err);
+      }
+    });
   }
 }
 
