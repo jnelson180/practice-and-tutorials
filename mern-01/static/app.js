@@ -24,7 +24,7 @@ class BugRow extends React.Component {
       React.createElement(
         "td",
         null,
-        this.props.bug.id
+        this.props.bug._id
       ),
       React.createElement(
         "td",
@@ -57,7 +57,7 @@ class BugTable extends React.Component {
   render() {
     console.log("Rendering bug table, num items: ", this.props.bugs.length);
     var bugRows = this.props.bugs.map(function (bug) {
-      return React.createElement(BugRow, { key: bug.id, bug: bug });
+      return React.createElement(BugRow, { key: bug._id, bug: bug });
     });
     return React.createElement(
       "table",
