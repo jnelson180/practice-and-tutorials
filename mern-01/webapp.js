@@ -7,11 +7,6 @@ var db;
 
 app.use(express.static('static'))
 
-var bugData = [
-  {id: 1, priority: 'P1', status:'Open', owner:'Ravan', title:'App crashes on open'},
-  {id: 2, priority: 'P2', status: 'New', owner:'Eddie', title:'Misaligned border on panel'},
-];
-
 var jsonParser = bodyParser.json();
 
 app.use(express.static('static'))
@@ -23,19 +18,16 @@ app.get('/api/bugs', function (req, res) {
 });
 
 app.post('/api/bugs', jsonParser, function (req, res) {
-  let newBug = {
-    id: bugData.length + 1,
-    priority: req.body.priority,
-    status: req.body.status,
-    owner: req.body.owner,
-    title: req.body.title
-  }
-  console.log('Bug report #' + newBug.id + '\n', newBug, '\n');
-  newBugData = bugData.slice(0);
-  newBugData.push(newBug);
-  bugData = newBugData;
-  res.json(newBug);
-})
+  var newBug = req.body;
+
+    db.collection("bugs").insertOne(newBug, function(err, result) {
+    var newId = result.insertedId;
+    db.collection("bugs").find({_id: newId}).next(function(err, doc) {
+      console.log("Received new bug report \n" + JSON.stringify(doc));
+      res.json(doc);
+    });
+  });
+});
 
 MongoClient.connect('mongodb://localhost/bugsdb', function(err, dbConnection) {
   db = dbConnection;
