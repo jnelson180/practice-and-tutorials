@@ -17,11 +17,8 @@ gulp.task('watch', function() {
     entries: ['src/app.js'],
     cache: {},
     packageCache: {},
-    plugin: [watchify],
+    plugin: [watchify]
   });
-  /* b.plugin(makeBundle, {
-    poll: true
-  }) */
 
   b.on('update', makeBundle);
   b.on('log', function(data) {
@@ -29,10 +26,11 @@ gulp.task('watch', function() {
   });
 
   function makeBundle() {
-    b.transform('babelify', {presets: 'react'})
-    .bundle()
-    .pipe(source('bundle.js'))
-    .pipe(gulp.dest('static/'));
+    b
+      .transform('babelify', {presets: 'react'})
+      .bundle()
+      .pipe(source('bundle.js'))
+      .pipe(gulp.dest('static/'));
   }
 
   makeBundle();

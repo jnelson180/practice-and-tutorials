@@ -11,28 +11,38 @@ var jsonParser = bodyParser.json();
 
 app.use(express.static('static'))
 
-app.get('/api/bugs', function (req, res) {
-  db.collection("bugs").find().toArray(function(err, docs) {
-    res.json(docs);
-  });
+app.get('/api/bugs', function(req, res) {
+  db
+    .collection("bugs")
+    .find()
+    .toArray(function(err, docs) {
+      res.json(docs);
+    });
 });
 
-app.post('/api/bugs', jsonParser, function (req, res) {
+app.post('/api/bugs', jsonParser, function(req, res) {
   var newBug = req.body;
 
-    db.collection("bugs").insertOne(newBug, function(err, result) {
-    var newId = result.insertedId;
-    db.collection("bugs").find({_id: newId}).next(function(err, doc) {
-      console.log("Received new bug report \n" + JSON.stringify(doc));
-      res.json(doc);
+  db
+    .collection("bugs")
+    .insertOne(newBug, function(err, result) {
+      var newId = result.insertedId;
+      db
+        .collection("bugs")
+        .find({_id: newId})
+        .next(function(err, doc) {
+          console.log("Received new bug report \n" + JSON.stringify(doc));
+          res.json(doc);
+        });
     });
-  });
 });
 
 MongoClient.connect('mongodb://localhost/bugsdb', function(err, dbConnection) {
   db = dbConnection;
   var server = app.listen(3000, function() {
-    var port = server.address().port;
+    var port = server
+      .address()
+      .port;
     console.log("Started server at port", port);
   });
 });
