@@ -4,3 +4,5 @@ React to parse it correctly; React can only technically return one element on re
 3.2- switched from React.createClass to the es6(future) class VariableName extends React.Component
 
 // now on 3.3 2/18 11:11pm
+
+7.2 installed Gulp as a global and --save-dev instead of just globally
