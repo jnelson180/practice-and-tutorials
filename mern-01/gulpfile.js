@@ -29,8 +29,13 @@ gulp.task('watch', function() {
     b
       .transform('babelify', {presets: 'react'})
       .bundle()
+      .on('error', function(err) {
+        console.error(err.message);
+        console.error(err.codeFrame);
+      })
       .pipe(source('bundle.js'))
       .pipe(gulp.dest('static/'));
+    console.log("Bundle updated successfully.");
   }
 
   makeBundle();
