@@ -7,19 +7,20 @@ class BugFilter extends React.Component {
     super(props);
   }
   render() {
-    console.log("Rendering BugFilter");
+    console.log("Rendering BugFilter..:");
     return (
       <div>Filter bugs in this section.</div>
     );
   }
 }
+//test
 
 class BugRow extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
-    console.log("Rendering BugRow: ", this.props.bug);
+    console.log("Rendering BugRow:", this.props.bug);
     return (
     <tr>
       <td>{this.props.bug._id}</td>
