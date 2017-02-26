@@ -1,3 +1,7 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+var $ = require('jquery');
+
 class BugFilter extends React.Component {
   constructor(props) {
     super(props);
@@ -5,9 +9,9 @@ class BugFilter extends React.Component {
   render() {
     console.log("Rendering BugFilter");
     return React.createElement(
-      "div",
+      'div',
       null,
-      "Filter bugs in this section."
+      'Filter bugs in this section.'
     );
   }
 }
@@ -19,30 +23,30 @@ class BugRow extends React.Component {
   render() {
     console.log("Rendering BugRow: ", this.props.bug);
     return React.createElement(
-      "tr",
+      'tr',
       null,
       React.createElement(
-        "td",
+        'td',
         null,
         this.props.bug._id
       ),
       React.createElement(
-        "td",
+        'td',
         null,
         this.props.bug.status
       ),
       React.createElement(
-        "td",
+        'td',
         null,
         this.props.bug.priority
       ),
       React.createElement(
-        "td",
+        'td',
         null,
         this.props.bug.owner
       ),
       React.createElement(
-        "td",
+        'td',
         null,
         this.props.bug.title
       )
@@ -60,43 +64,43 @@ class BugTable extends React.Component {
       return React.createElement(BugRow, { key: bug._id, bug: bug });
     });
     return React.createElement(
-      "table",
+      'table',
       null,
       React.createElement(
-        "thead",
+        'thead',
         null,
         React.createElement(
-          "tr",
+          'tr',
           null,
           React.createElement(
-            "th",
+            'th',
             null,
-            "ID"
+            'ID'
           ),
           React.createElement(
-            "th",
+            'th',
             null,
-            "Status"
+            'Status'
           ),
           React.createElement(
-            "th",
+            'th',
             null,
-            "Priority"
+            'Priority'
           ),
           React.createElement(
-            "th",
+            'th',
             null,
-            "Owner"
+            'Owner'
           ),
           React.createElement(
-            "th",
+            'th',
             null,
-            "Title"
+            'Title'
           )
         )
       ),
       React.createElement(
-        "tbody",
+        'tbody',
         null,
         bugRows
       )
@@ -113,17 +117,17 @@ class BugAdd extends React.Component {
     console.log("Rendering BugAdd");
     console.log(this.props);
     return React.createElement(
-      "div",
+      'div',
       null,
       React.createElement(
-        "form",
-        { name: "bugAdd" },
-        React.createElement("input", { type: "text", name: "owner", placeholder: "Owner" }),
-        React.createElement("input", { type: "text", name: "title", placeholder: "Title" }),
+        'form',
+        { name: 'bugAdd' },
+        React.createElement('input', { type: 'text', name: 'owner', placeholder: 'Owner' }),
+        React.createElement('input', { type: 'text', name: 'title', placeholder: 'Title' }),
         React.createElement(
-          "button",
+          'button',
           { onClick: this.handleSubmit },
-          "Add Bug"
+          'Add Bug'
         )
       )
     );
@@ -155,17 +159,17 @@ class BugList extends React.Component {
   render() {
     console.log("Rendering bug list, num items: ", this.state.bugs.length);
     return React.createElement(
-      "div",
+      'div',
       null,
       React.createElement(
-        "h1",
+        'h1',
         null,
-        "Bug Tracker"
+        'Bug Tracker'
       ),
       React.createElement(BugFilter, null),
-      React.createElement("hr", null),
+      React.createElement('hr', null),
       React.createElement(BugTable, { bugs: this.state.bugs }),
-      React.createElement("hr", null),
+      React.createElement('hr', null),
       React.createElement(BugAdd, { addBug: this.addBug })
     );
   }
