@@ -6,3 +6,12 @@ React to parse it correctly; React can only technically return one element on re
 // now on 3.3 2/18 11:11pm
 
 7.2 installed Gulp as a global and --save-dev instead of just globally
+
+8.1 Instead of using var filter as:
++  var filter = {};
++  if (req.query.priority)
++    filter.priority = req.query.priority;
++  if (req.query.status)
++    filter.status = req.query.status;
+
+used req.query as find() arg, passing in query object data

@@ -14,7 +14,7 @@ app.use(express.static('static'))
 app.get('/api/bugs', function(req, res) {
   db
     .collection("bugs")
-    .find()
+    .find( req.query )
     .toArray(function(err, docs) {
       res.json(docs);
     });
