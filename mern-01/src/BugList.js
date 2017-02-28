@@ -7,9 +7,9 @@ var BugAdd = require('./BugAdd');
 module.exports = class BugList extends React.Component {
   constructor() {
     super();
-    this.addBug = this
-      .addBug
-      .bind(this);
+    /* Probably not needed; bound at declaration */
+    /* this.addBug = this.addBug.bind(this); */
+    /* this.loadData = this.loadData.bind(this); */
     this.state = {
       bugs: []
     }
@@ -19,7 +19,7 @@ module.exports = class BugList extends React.Component {
     return (
       <div>
         <h1>Bug Tracker</h1>
-        <BugFilter/>
+        <BugFilter submitHandler={ this.loadData }/>
         <hr/>
         <BugTable bugs={this.state.bugs}/>
         <hr/>
@@ -28,8 +28,11 @@ module.exports = class BugList extends React.Component {
     );
   }
   componentDidMount() {
+    this.loadData();
+  }
+  loadData(filter) {
     $
-      .ajax('/api/bugs')
+      .ajax('/api/bugs', {data: filter})
       .done(function(data) {
         var jsonData = data;
         this.setState({bugs: jsonData});

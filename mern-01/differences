@@ -15,3 +15,24 @@ React to parse it correctly; React can only technically return one element on re
 +    filter.status = req.query.status;
 
 used req.query as find() arg, passing in query object data
+
+8.2 for extends React.Component, had to bind (this)
+loadData(filter) {
+  $
+    .ajax('/api/bugs', {data: filter})
+    .done(function(data) {
+      var jsonData = data;
+      this.setState({bugs: jsonData});
+    }.bind(this));
+}
+
+And in componentDidMount, could not pass in blank obj as default:
+componentDidMount() {
+  this.loadData();
+}
+
+NOT
+componentDidMount() {
+  this.loadData({});
+}
+-- the above causes the submit to load a blank object for filter.

@@ -30755,14 +30755,17 @@ var ReactDOM = require('react-dom');
 module.exports = class BugFilter extends React.Component {
   constructor(props) {
     super(props);
+    this.submit = this.submit.bind(this);
+  }
+  submit(e) {
+    console.log('this is: ');
+    console.log(this);
+    this.props.submitHandler({ priority: "P1" });
   }
   render() {
     console.log("Rendering BugFilter..:");
-    return React.createElement(
-      'div',
-      null,
-      'Filter bugs in this section.'
-    );
+    console.log(this.props);
+    return React.createElement('div', null, React.createElement('button', { onClick: this.submit }, 'Test Filter'));
   }
 };
 
@@ -30776,30 +30779,22 @@ var BugAdd = require('./BugAdd');
 module.exports = class BugList extends React.Component {
   constructor() {
     super();
-    this.addBug = this.addBug.bind(this);
+    /* Probably not needed; bound at declaration */
+    /* this.addBug = this.addBug.bind(this); */
+    /* this.loadData = this.loadData.bind(this); */
     this.state = {
       bugs: []
     };
   }
   render() {
     console.log("Rendering bug list, num items:", this.state.bugs.length);
-    return React.createElement(
-      'div',
-      null,
-      React.createElement(
-        'h1',
-        null,
-        'Bug Tracker'
-      ),
-      React.createElement(BugFilter, null),
-      React.createElement('hr', null),
-      React.createElement(BugTable, { bugs: this.state.bugs }),
-      React.createElement('hr', null),
-      React.createElement(BugAdd, { addBug: this.addBug })
-    );
+    return React.createElement('div', null, React.createElement('h1', null, 'Bug Tracker'), React.createElement(BugFilter, { submitHandler: this.loadData }), React.createElement('hr', null), React.createElement(BugTable, { bugs: this.state.bugs }), React.createElement('hr', null), React.createElement(BugAdd, { addBug: this.addBug }));
   }
   componentDidMount() {
-    $.ajax('/api/bugs').done(function (data) {
+    this.loadData();
+  }
+  loadData(filter) {
+    $.ajax('/api/bugs', { data: filter }).done(function (data) {
       var jsonData = data;
       this.setState({ bugs: jsonData });
     }.bind(this));
@@ -30830,35 +30825,7 @@ class BugRow extends React.Component {
   }
   render() {
     console.log("Rendering BugRow:", this.props.bug);
-    return React.createElement(
-      'tr',
-      null,
-      React.createElement(
-        'td',
-        null,
-        this.props.bug._id
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.status
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.priority
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.owner
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.title
-      )
-    );
+    return React.createElement('tr', null, React.createElement('td', null, this.props.bug._id), React.createElement('td', null, this.props.bug.status), React.createElement('td', null, this.props.bug.priority), React.createElement('td', null, this.props.bug.owner), React.createElement('td', null, this.props.bug.title));
   }
 };
 
@@ -30871,48 +30838,7 @@ class BugTable extends React.Component {
     var bugRows = this.props.bugs.map(function (bug) {
       return React.createElement(BugRow, { key: bug._id, bug: bug });
     });
-    return React.createElement(
-      'table',
-      null,
-      React.createElement(
-        'thead',
-        null,
-        React.createElement(
-          'tr',
-          null,
-          React.createElement(
-            'th',
-            null,
-            'ID'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Status'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Priority'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Owner'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Title'
-          )
-        )
-      ),
-      React.createElement(
-        'tbody',
-        null,
-        bugRows
-      )
-    );
+    return React.createElement('table', null, React.createElement('thead', null, React.createElement('tr', null, React.createElement('th', null, 'ID'), React.createElement('th', null, 'Status'), React.createElement('th', null, 'Priority'), React.createElement('th', null, 'Owner'), React.createElement('th', null, 'Title'))), React.createElement('tbody', null, bugRows));
   }
 };
 

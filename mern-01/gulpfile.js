@@ -36,6 +36,7 @@ gulp.task('watch', function() {
       .pipe(source('bundle.js'))
       .pipe(gulp.dest('static/'));
     console.log("Bundle updated successfully.");
+    console.log(new Date());
   }
 
   makeBundle();
