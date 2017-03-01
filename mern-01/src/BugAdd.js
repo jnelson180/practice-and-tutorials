@@ -9,8 +9,8 @@ module.exports = class BugAdd extends React.Component {
       .bind(this);
   }
   render() {
-    console.log("Rendering BugAdd");
-    console.log(this.props);
+    // console.log("Rendering BugAdd");
+    // console.log(this.props);
     return (
       <div>
         <form name="bugAdd">

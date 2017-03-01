@@ -203,7 +203,7 @@ module.exports = camelizeStyleName;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 var isTextNode = require('./isTextNode');
@@ -458,7 +458,7 @@ module.exports = createNodesFromMarkup;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 function makeEmptyFunction(arg) {
@@ -893,7 +893,7 @@ module.exports = isTextNode;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  * @typechecks static-only
  */
 
@@ -981,7 +981,7 @@ module.exports = performanceNow;
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @typechecks
- *
+ * 
  */
 
 /*eslint-disable no-self-compare */
@@ -12461,7 +12461,7 @@ module.exports = CSSPropertyOperations;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -14175,7 +14175,7 @@ module.exports = EventPluginHub;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -15102,7 +15102,7 @@ module.exports = HTMLDOMPropertyConfig;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -15299,7 +15299,7 @@ module.exports = LinkedValueUtils;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -15927,7 +15927,7 @@ module.exports = ReactComponentBrowserEnvironment;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -19897,7 +19897,7 @@ module.exports = ReactDOMUnknownPropertyHook;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -20413,7 +20413,7 @@ module.exports = {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -20464,7 +20464,7 @@ module.exports = ReactEmptyComponent;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -20730,7 +20730,7 @@ module.exports = ReactEventListener;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -20822,7 +20822,7 @@ module.exports = ReactHostComponent;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -21063,7 +21063,7 @@ module.exports = ReactInstanceMap;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -21089,7 +21089,7 @@ module.exports = { debugTool: debugTool };
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -22170,7 +22170,7 @@ module.exports = ReactMultiChild;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -22212,7 +22212,7 @@ module.exports = ReactNodeTypes;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -22308,7 +22308,7 @@ module.exports = ReactOwner;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -22334,7 +22334,7 @@ module.exports = ReactPropTypeLocationNames;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -22701,7 +22701,7 @@ module.exports = ReactReconciler;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -22883,7 +22883,7 @@ module.exports = ReactServerRenderingTransaction;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -24012,7 +24012,7 @@ module.exports = SelectEventPlugin;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -25087,7 +25087,7 @@ module.exports = SyntheticWheelEvent;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -25341,7 +25341,7 @@ module.exports = ViewportMetrics;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -25400,7 +25400,7 @@ module.exports = accumulateInto;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -25832,7 +25832,7 @@ module.exports = findDOMNode;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -25909,7 +25909,7 @@ module.exports = flattenChildren;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -26200,7 +26200,7 @@ module.exports = getHostComponentFromComposite;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -26241,7 +26241,7 @@ module.exports = getIteratorFn;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -26660,7 +26660,7 @@ module.exports = isEventSupported;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -26737,7 +26737,7 @@ module.exports = quoteAttributeValueForBrowser;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 'use strict';
 
@@ -28672,7 +28672,7 @@ module.exports = ReactComponent;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -29007,7 +29007,7 @@ module.exports = ReactComponentTreeHook;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -30374,7 +30374,7 @@ arguments[4][105][0].apply(exports,arguments)
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 'use strict';
@@ -30718,23 +30718,9 @@ module.exports = class BugAdd extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   render() {
-    console.log("Rendering BugAdd");
-    console.log(this.props);
-    return React.createElement(
-      'div',
-      null,
-      React.createElement(
-        'form',
-        { name: 'bugAdd' },
-        React.createElement('input', { type: 'text', name: 'owner', placeholder: 'Owner' }),
-        React.createElement('input', { type: 'text', name: 'title', placeholder: 'Title' }),
-        React.createElement(
-          'button',
-          { onClick: this.handleSubmit },
-          'Add Bug'
-        )
-      )
-    );
+    // console.log("Rendering BugAdd");
+    // console.log(this.props);
+    return React.createElement('div', null, React.createElement('form', { name: 'bugAdd' }, React.createElement('input', { type: 'text', name: 'owner', placeholder: 'Owner' }), React.createElement('input', { type: 'text', name: 'title', placeholder: 'Title' }), React.createElement('button', { onClick: this.handleSubmit }, 'Add Bug')));
   }
   handleSubmit(e) {
     console.log("this.props is:");
@@ -30760,8 +30746,6 @@ module.exports = class BugFilter extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
   submit(e) {
-    console.log('this is: ');
-    console.log(this);
     this.props.submitHandler({
       priority: this.state.priority,
       status: this.state.status
@@ -30778,7 +30762,7 @@ module.exports = class BugFilter extends React.Component {
     // it's updated after render
   }
   render() {
-    console.log("Rendering BugFilter..:");
+    // console.log("Rendering BugFilter..:");
     console.log(this.state);
     return React.createElement('div', null, React.createElement('form', null, React.createElement('select', { name: 'priority', value: this.state.priority, onChange: this.handleChange }, React.createElement('option', { value: '' }, ' '), React.createElement('option', { value: 'P1' }, 'P1'), React.createElement('option', { value: 'P2' }, 'P2')), React.createElement('select', { name: 'status', value: this.state.status, onChange: this.handleChange }, React.createElement('option', { value: '' }, ' '), React.createElement('option', { value: 'New' }, 'New'), React.createElement('option', { value: 'Open' }, 'Open')), React.createElement('button', { onClick: this.submit }, 'Test Filter')));
   }
@@ -30794,29 +30778,13 @@ var BugAdd = require('./BugAdd');
 module.exports = class BugList extends React.Component {
   constructor() {
     super();
-    /* Probably not needed; bound at declaration */
-    /* this.addBug = this.addBug.bind(this); */
-    /* this.loadData = this.loadData.bind(this); */
     this.state = {
       bugs: []
     };
   }
   render() {
-    console.log("Rendering bug list, num items:", this.state.bugs.length);
-    return React.createElement(
-      'div',
-      null,
-      React.createElement(
-        'h1',
-        null,
-        'Bug Tracker'
-      ),
-      React.createElement(BugFilter, { submitHandler: this.loadData }),
-      React.createElement('hr', null),
-      React.createElement(BugTable, { bugs: this.state.bugs }),
-      React.createElement('hr', null),
-      React.createElement(BugAdd, { addBug: this.addBug })
-    );
+    // console.log("Rendering bug list, num items:", this.state.bugs.length);
+    return React.createElement('div', null, React.createElement('h1', null, 'Bug Tracker'), React.createElement(BugFilter, { submitHandler: this.loadData }), React.createElement('hr', null), React.createElement(BugTable, { bugs: this.state.bugs }), React.createElement('hr', null), React.createElement(BugAdd, { addBug: this.addBug }));
   }
   componentDidMount() {
     this.loadData();
@@ -30852,36 +30820,8 @@ class BugRow extends React.Component {
     super(props);
   }
   render() {
-    console.log("Rendering BugRow:", this.props.bug);
-    return React.createElement(
-      'tr',
-      null,
-      React.createElement(
-        'td',
-        null,
-        this.props.bug._id
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.status
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.priority
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.owner
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.title
-      )
-    );
+    // console.log("Rendering BugRow:", this.props.bug);
+    return React.createElement('tr', null, React.createElement('td', null, this.props.bug._id), React.createElement('td', null, this.props.bug.status), React.createElement('td', null, this.props.bug.priority), React.createElement('td', null, this.props.bug.owner), React.createElement('td', null, this.props.bug.title));
   }
 };
 
@@ -30890,52 +30830,11 @@ class BugTable extends React.Component {
     super(props);
   }
   render() {
-    console.log("Rendering bug table, num items: ", this.props.bugs.length);
+    // console.log("Rendering bug table, num items: ", this.props.bugs.length);
     var bugRows = this.props.bugs.map(function (bug) {
       return React.createElement(BugRow, { key: bug._id, bug: bug });
     });
-    return React.createElement(
-      'table',
-      null,
-      React.createElement(
-        'thead',
-        null,
-        React.createElement(
-          'tr',
-          null,
-          React.createElement(
-            'th',
-            null,
-            'ID'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Status'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Priority'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Owner'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Title'
-          )
-        )
-      ),
-      React.createElement(
-        'tbody',
-        null,
-        bugRows
-      )
-    );
+    return React.createElement('table', null, React.createElement('thead', null, React.createElement('tr', null, React.createElement('th', null, 'ID'), React.createElement('th', null, 'Status'), React.createElement('th', null, 'Priority'), React.createElement('th', null, 'Owner'), React.createElement('th', null, 'Title'))), React.createElement('tbody', null, bugRows));
   }
 };
 

@@ -3,3 +3,7 @@ static/app.js
 static/bundle.js
 scripts/browserify.sh
 scripts/transform.sh
+/static/bundle.js
+/mern-01/static/bundle.js
+static/bundle.js
+mern-01/static/bundle.js

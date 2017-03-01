@@ -9,8 +9,6 @@ module.exports = class BugFilter extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
   submit(e) {
-    console.log('this is: ');
-    console.log(this);
     this.props.submitHandler({
       priority: this.state.priority,
       status: this.state.status
@@ -28,7 +26,7 @@ module.exports = class BugFilter extends React.Component {
     // it's updated after render
   }
   render() {
-    console.log("Rendering BugFilter..:");
+    // console.log("Rendering BugFilter..:");
     console.log(this.state);
     return (
       <div>

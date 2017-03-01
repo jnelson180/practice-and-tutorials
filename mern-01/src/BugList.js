@@ -7,15 +7,12 @@ var BugAdd = require('./BugAdd');
 module.exports = class BugList extends React.Component {
   constructor() {
     super();
-    /* Probably not needed; bound at declaration */
-    /* this.addBug = this.addBug.bind(this); */
-    /* this.loadData = this.loadData.bind(this); */
     this.state = {
       bugs: []
     }
   }
   render() {
-    console.log("Rendering bug list, num items:", this.state.bugs.length);
+    // console.log("Rendering bug list, num items:", this.state.bugs.length);
     return (
       <div>
         <h1>Bug Tracker</h1>
@@ -66,7 +63,7 @@ class BugRow extends React.Component {
     super(props);
   }
   render() {
-    console.log("Rendering BugRow:", this.props.bug);
+    // console.log("Rendering BugRow:", this.props.bug);
     return (
       <tr>
         <td>{this.props.bug._id}</td>
@@ -84,7 +81,7 @@ class BugTable extends React.Component {
     super(props);
   }
   render() {
-    console.log("Rendering bug table, num items: ", this.props.bugs.length);
+    // console.log("Rendering bug table, num items: ", this.props.bugs.length);
     var bugRows = this
       .props
       .bugs
