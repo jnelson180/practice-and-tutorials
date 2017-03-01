@@ -30743,15 +30743,16 @@ module.exports = class BugFilter extends React.Component {
     super(props);
     this.state = { priority: "", status: "" };
     this.submit = this.submit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.onChangeStatus = this.onChangeStatus.bind(this);
   }
   submit(e) {
+    e.preventDefault();
     this.props.submitHandler({
       priority: this.state.priority,
       status: this.state.status
     });
   }
-  handleChange(event) {
+  onChangeStatus(event) {
     event.persist();
     if (event.target.name == 'priority') {
       this.setState({ priority: event.target.value });
@@ -30764,7 +30765,7 @@ module.exports = class BugFilter extends React.Component {
   render() {
     // console.log("Rendering BugFilter..:");
     console.log(this.state);
-    return React.createElement('div', null, React.createElement('form', null, React.createElement('select', { name: 'priority', value: this.state.priority, onChange: this.handleChange }, React.createElement('option', { value: '' }, ' '), React.createElement('option', { value: 'P1' }, 'P1'), React.createElement('option', { value: 'P2' }, 'P2')), React.createElement('select', { name: 'status', value: this.state.status, onChange: this.handleChange }, React.createElement('option', { value: '' }, ' '), React.createElement('option', { value: 'New' }, 'New'), React.createElement('option', { value: 'Open' }, 'Open')), React.createElement('button', { onClick: this.submit }, 'Test Filter')));
+    return React.createElement('div', null, 'Status:', React.createElement('select', { name: 'priority', value: this.state.priority, onChange: this.onChangeStatus }, React.createElement('option', { value: '' }, ' '), React.createElement('option', { value: 'P1' }, 'P1'), React.createElement('option', { value: 'P2' }, 'P2'), React.createElement('option', { value: 'P3' }, 'P3')), React.createElement('br', null), 'Priority:', React.createElement('select', { name: 'status', value: this.state.status, onChange: this.onChangeStatus }, React.createElement('option', { value: '' }, ' '), React.createElement('option', { value: 'New' }, 'New'), React.createElement('option', { value: 'Open' }, 'Open'), React.createElement('option', { value: 'Closed' }, 'Closed')), React.createElement('br', null), React.createElement('button', { onClick: this.submit }, 'Apply'));
   }
 };
 
@@ -30781,6 +30782,7 @@ module.exports = class BugList extends React.Component {
     this.state = {
       bugs: []
     };
+    this.loadData = this.loadData.bind(this);
   }
   render() {
     // console.log("Rendering bug list, num items:", this.state.bugs.length);

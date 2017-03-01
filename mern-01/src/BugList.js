@@ -10,6 +10,7 @@ module.exports = class BugList extends React.Component {
     this.state = {
       bugs: []
     }
+    this.loadData = this.loadData.bind(this);
   }
   render() {
     // console.log("Rendering bug list, num items:", this.state.bugs.length);

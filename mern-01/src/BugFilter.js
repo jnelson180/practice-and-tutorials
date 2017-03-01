@@ -6,15 +6,16 @@ module.exports = class BugFilter extends React.Component {
     super(props);
     this.state = {priority: "", status: ""};
     this.submit = this.submit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.onChangeStatus = this.onChangeStatus.bind(this);
   }
   submit(e) {
+    e.preventDefault();
     this.props.submitHandler({
       priority: this.state.priority,
       status: this.state.status
     });
   }
-  handleChange(event) {
+  onChangeStatus(event) {
     event.persist();
     if (event.target.name == 'priority') {
     this.setState({priority: event.target.value});
@@ -30,19 +31,23 @@ module.exports = class BugFilter extends React.Component {
     console.log(this.state);
     return (
       <div>
-      <form>
-        <select name="priority" value={this.state.priority} onChange={this.handleChange}>
+      Status:
+        <select name="priority" value={this.state.priority} onChange={ this.onChangeStatus }>
           <option value=""> </option>
           <option value="P1">P1</option>
           <option value="P2">P2</option>
+          <option value="P3">P3</option>
         </select>
-        <select name="status" value={this.state.status} onChange={this.handleChange}>
+        <br />
+        Priority:
+        <select name="status" value={this.state.status} onChange={ this.onChangeStatus }>
           <option value=""> </option>
           <option value="New">New</option>
           <option value="Open">Open</option>
+          <option value="Closed">Closed</option>
         </select>
-        <button onClick={this.submit}>Test Filter</button>
-      </form>
+        <br />
+        <button onClick={this.submit}>Apply</button>
       </div>
     );
   }
