@@ -33966,21 +33966,10 @@ module.exports = class BugList extends React.Component {
     this.loadData = this.loadData.bind(this);
   }
   render() {
+    var body = document.getElementsByTagName('body')[0];
+    body.style.backgroundImage = 'none';
     // console.log("Rendering bug list, num items:", this.state.bugs.length);
-    return React.createElement(
-      'div',
-      null,
-      React.createElement(
-        'h1',
-        null,
-        'Bug Tracker'
-      ),
-      React.createElement(BugFilter, { submitHandler: this.loadData }),
-      React.createElement('hr', null),
-      React.createElement(BugTable, { bugs: this.state.bugs }),
-      React.createElement('hr', null),
-      React.createElement(BugAdd, { addBug: this.addBug })
-    );
+    return React.createElement('div', null, React.createElement('h1', null, 'Bug Tracker'), React.createElement(BugFilter, { submitHandler: this.loadData }), React.createElement('hr', null), React.createElement(BugTable, { bugs: this.state.bugs }), React.createElement('hr', null), React.createElement(BugAdd, { addBug: this.addBug }));
   }
   componentDidMount() {
     this.loadData();
@@ -34017,35 +34006,7 @@ class BugRow extends React.Component {
   }
   render() {
     // console.log("Rendering BugRow:", this.props.bug);
-    return React.createElement(
-      'tr',
-      null,
-      React.createElement(
-        'td',
-        null,
-        this.props.bug._id
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.status
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.priority
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.owner
-      ),
-      React.createElement(
-        'td',
-        null,
-        this.props.bug.title
-      )
-    );
+    return React.createElement('tr', null, React.createElement('td', null, this.props.bug._id), React.createElement('td', null, this.props.bug.status), React.createElement('td', null, this.props.bug.priority), React.createElement('td', null, this.props.bug.owner), React.createElement('td', null, this.props.bug.title));
   }
 };
 
@@ -34058,48 +34019,7 @@ class BugTable extends React.Component {
     var bugRows = this.props.bugs.map(function (bug) {
       return React.createElement(BugRow, { key: bug._id, bug: bug });
     });
-    return React.createElement(
-      'table',
-      null,
-      React.createElement(
-        'thead',
-        null,
-        React.createElement(
-          'tr',
-          null,
-          React.createElement(
-            'th',
-            null,
-            'ID'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Status'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Priority'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Owner'
-          ),
-          React.createElement(
-            'th',
-            null,
-            'Title'
-          )
-        )
-      ),
-      React.createElement(
-        'tbody',
-        null,
-        bugRows
-      )
-    );
+    return React.createElement('table', null, React.createElement('thead', null, React.createElement('tr', null, React.createElement('th', null, 'ID'), React.createElement('th', null, 'Status'), React.createElement('th', null, 'Priority'), React.createElement('th', null, 'Owner'), React.createElement('th', null, 'Title'))), React.createElement('tbody', null, bugRows));
   }
 };
 
@@ -34116,7 +34036,10 @@ var NoMatch = React.createClass({
   displayName: 'NoMatch',
 
   render: function () {
-    return React.createElement('h2', null, 'No match for the route');
+    var body = document.getElementsByTagName('body')[0];
+    body.style.backgroundImage = 'url(http://jnelson180.github.io/misc/cat-404.jpg)';
+    body.style.backgroundSize = 'cover';
+    return React.createElement('div', null, React.createElement('h1', null, '404'), React.createElement('h3', null, 'File not found-- please check your URL and try again!'));
   }
 });
 

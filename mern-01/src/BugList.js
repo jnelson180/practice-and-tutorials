@@ -13,6 +13,8 @@ module.exports = class BugList extends React.Component {
     this.loadData = this.loadData.bind(this);
   }
   render() {
+    var body = document.getElementsByTagName('body')[0];
+    body.style.backgroundImage = 'none';
     // console.log("Rendering bug list, num items:", this.state.bugs.length);
     return (
       <div>
