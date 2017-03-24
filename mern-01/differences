@@ -41,3 +41,7 @@ componentDidMount() {
 if something is changing state and is a function,
 does not have access so have to bind to (this) to give
 access through the react component (which is 'this')
+
+9.1 had to use HashRouter from 'react-router-dom'
+instead of Router from 'react-router',
+as version is now 4.0 as opposed to 1.x
